@@ -1,9 +1,9 @@
 # wait time
-scoreboard players remove @s[tag=pingcheck.waiting] pingcheck.ping 1
-execute if score @s[tag=pingcheck.waiting] pingcheck.ping matches ..0 at @s run return run function ping_check:start
+execute if entity @s[tag=pingcheck.waiting] run scoreboard players remove @s pingcheck.ping 1
+execute if entity @s[tag=pingcheck.waiting] if score @s pingcheck.ping matches ..0 at @s run return run function ping_check:start
 
 # launch
-execute if entity @s[tag=pingcheck.launch] run function ping_check:launch
+execute as @s[tag=pingcheck.launch] run function ping_check:launch
 execute if entity @s[tag=!pingcheck.checking] run return 0
 
 # check y level and add to the ping
